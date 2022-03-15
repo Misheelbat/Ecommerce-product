@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>E-commerce product page</title>
+	</head>
+	<body>
+		<div class="body-container">
+			<header class="main-header flex">
+				<button
+					class="m-nav-toggle"
+					aria-controls="nav-links"
+					aria-expanded="false"
+				></button>
+				<img class="logo" src="/images/logo.svg" alt="site-logo" />
+				<nav class="flex">
+					<ul data-open="false" class="flex nav-links hover-underline">
+						<li><a href="#">Collections</a></li>
+						<li><a href="#">Men</a></li>
+						<li><a href="#">Women</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</nav>
+				<div class="interactive flex">
+					<img class="cart" src="/images/icon-cart.svg" alt="shopping-cart" />
+					<img class="avatar" src="/images/image-avatar.png" alt="avatar" />
+				</div>
+			</header>
+			<main class="container flex">
+				<div class="p-display flow">
+					<img src="/images/image-product-1.jpg" alt="picture of a sneakers" />
+					<div class="flex p-display-sub">
+						<img src="/images/image-product-1-thumbnail.jpg" alt="" />
+						<img src="/images/image-product-2-thumbnail.jpg" alt="" />
+						<img src="/images/image-product-3-thumbnail.jpg" alt="" />
+						<img src="/images/image-product-4-thumbnail.jpg" alt="" />
+					</div>
+				</div>
+				<div class="p-info flow">
+					<p class="p-subtitle">Sneaker Company</p>
+					<h1 class="p-title">Fall Limited Edition <span>Sneakers</span></h1>
+					<p class="p-desc">
+						These low-profile sneakers are your perfect casual wear companion.
+						Featuring a durable rubber outer sole, they’ll withstand everything
+						the weather can offer.
+					</p>
+					<div class="p-price">
+						<p>$125.00 <span>50%</span></p>
+						<p>$250.00</p>
+					</div>
+					<div class="flex btn-group">
+						<div class="flex btns">
+							<img src="/images/icon-minus.svg" alt="minus" />
+							<span>0</span>
+							<img src="/images/icon-plus.svg" alt="plus" />
+						</div>
+						<button class="btn-add">
+							<img src="/images/icon-cart.svg" alt="" />
+							Add to cart
+						</button>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
