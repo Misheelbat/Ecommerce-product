@@ -15,6 +15,7 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="style.css" />
+		<script src="app.js" defer></script>
 		<title>E-commerce product page</title>
 	</head>
 	<body>
@@ -42,12 +43,32 @@
 			</header>
 			<main class="container flex">
 				<div class="p-display flow">
-					<img src="/images/image-product-1.jpg" alt="picture of a sneakers" />
+					<img
+						class="main-thumb"
+						src="/images/image-product-1.jpg"
+						alt="picture of a sneakers"
+					/>
 					<div class="flex p-display-sub">
-						<img src="/images/image-product-1-thumbnail.jpg" alt="" />
-						<img src="/images/image-product-2-thumbnail.jpg" alt="" />
-						<img src="/images/image-product-3-thumbnail.jpg" alt="" />
-						<img src="/images/image-product-4-thumbnail.jpg" alt="" />
+						<img
+							class="active prod-thumbnail"
+							src="/images/image-product-1-thumbnail.jpg"
+							alt="shoe"
+						/>
+						<img
+							class="prod-thumbnail"
+							src="/images/image-product-2-thumbnail.jpg"
+							alt="shoe"
+						/>
+						<img
+							class="prod-thumbnail"
+							src="/images/image-product-3-thumbnail.jpg"
+							alt="shoe"
+						/>
+						<img
+							class="prod-thumbnail"
+							src="/images/image-product-4-thumbnail.jpg"
+							alt="shoe"
+						/>
 					</div>
 				</div>
 				<div class="p-info flow">
@@ -64,9 +85,9 @@
 					</div>
 					<div class="flex btn-group">
 						<div class="flex btns">
-							<img src="/images/icon-minus.svg" alt="minus" />
-							<span>0</span>
-							<img src="/images/icon-plus.svg" alt="plus" />
+							<img class="minus" src="/images/icon-minus.svg" alt="minus" />
+							<span class="amount"></span>
+							<img class="plus" src="/images/icon-plus.svg" alt="plus" />
 						</div>
 						<button class="btn-add">
 							<img src="/images/icon-cart.svg" alt="" />
