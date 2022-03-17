@@ -4,7 +4,7 @@
 	--clr-dark-blue: rgb(29, 32, 37);
 	--clr-grayish-blue: rgb(104, 112, 125);
 	--clr-Grayish-light: rgb(182, 188, 200);
-	--clr-Light-grayish-blue: rgb(247, 248, 253);
+	--clr-Light-grayish-blue: #f7f8fd;
 	--clr-white: rgb(255, 255, 255);
 	--clr-Black-half-op: rgba(0, 0, 0, 0.75);
 
@@ -74,6 +74,11 @@ a {
 .flow > * + * {
 	margin-top: var(--flow-gap, 2rem);
 }
+.body-container {
+	max-width: 68rem;
+	margin-inline: auto;
+	background-color: var(--clr-Light-grayish-blue);
+}
 /* ---------------- */
 /*    Typography    */
 /* ---------------- */
@@ -138,10 +143,10 @@ a {
 	margin-left: auto;
 }
 
-.interactive img {
+.interactive .avatar {
 	object-fit: cover;
 	max-width: 45px;
-	margin-left: 1.5rem;
+	margin-left: 0.5rem;
 }
 
 /* hover effect */
@@ -149,9 +154,7 @@ a {
 	border-radius: 50%;
 	border: 2px solid rgba(var(--clr-primary), 0);
 }
-.avatar:hover {
-	border-color: rgba(var(--clr-primary), 1);
-}
+
 /*  */
 
 .interactive .cart {
@@ -204,6 +207,80 @@ a {
 		background-image: url(/images/icon-close.svg);
 	}
 }
+.cart {
+	position: relative;
+	margin-left: 0;
+	min-width: max-content;
+	width: 100%;
+}
+.cart-amount::before {
+	content: attr(data-amount);
+	z-index: 10;
+	position: absolute;
+	width: 28px;
+	height: 22px;
+	top: 0;
+	color: white;
+	background-color: rgb(var(--clr-primary));
+	text-align: center;
+	border-radius: 45%;
+	font-weight: 700;
+	padding: 1px 0;
+	font-size: 14px;
+	transform: translate(10px, -14px);
+}
+.shopping-cart {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	top: 2.5rem;
+	background-color: white;
+	transform: translateX(-60%);
+	border-radius: 7px;
+	box-shadow: 0.3rem 0.3rem 4px rgba(0, 0, 0, 0.1);
+}
+.shopping-cart h2 {
+	padding: 1rem;
+	color: black;
+	font-weight: 700;
+	font-size: 14px;
+	border-bottom: 1px solid grey;
+}
+.checkout {
+	display: flex;
+	padding: 1rem;
+	width: 100%;
+	flex-direction: column;
+	font-size: 13px;
+}
+.checkout-img {
+	width: 20%;
+	aspect-ratio: 1;
+	border-radius: 4px;
+}
+.checkout-text {
+	position: relative;
+	width: 75%;
+	width: max-content;
+	line-height: 1.6;
+}
+.delete {
+	position: absolute;
+	right: 1rem;
+	top: 40%;
+}
+.checkout-text span {
+	display: block;
+}
+.checkout-btn {
+	border: 0;
+	margin-top: 1rem;
+	padding-block: 1rem;
+	background-color: rgb(var(--clr-primary));
+	color: #f7f8fd;
+	font-weight: 700;
+	border-radius: 8px;
+}
 /* nav hover effect */
 .hover-underline > * {
 	padding: var(--underline-gap, 3em) 0;
@@ -213,6 +290,9 @@ a {
 }
 .hover-underline > *:hover,
 .hover-underline > *:focus {
+	border-color: rgba(var(--clr-primary), 1);
+}
+.avatar:hover {
 	border-color: rgba(var(--clr-primary), 1);
 }
 
@@ -225,9 +305,9 @@ a {
 .p-info {
 	padding-inline: 1.5rem;
 }
-.p-display img {
+.p-display > img:first-child {
 	width: 100%;
-	border-radius: 1%;
+	border-radius: 2%;
 }
 .p-display-sub {
 	display: none;
@@ -267,9 +347,7 @@ a {
 	border-radius: 7px;
 	margin-bottom: 1rem;
 }
-/* .btns > * + * {
-	margin-left: 20px;
-} */
+
 .btns span {
 	color: black;
 	font-weight: 700;
@@ -294,6 +372,8 @@ a {
 	display: inline-block;
 	width: 14px;
 	margin-right: 5px;
+	filter: brightness(0) saturate(100%) invert(97%) sepia(99%) saturate(123%)
+		hue-rotate(111deg) brightness(109%) contrast(98%);
 }
 @media (min-width: 750px) {
 	.container {
@@ -302,9 +382,15 @@ a {
 	.main-header {
 		border-bottom: 1px solid var(--clr-Grayish-light);
 		padding-inline: 0;
+		margin-top: 0;
 	}
 	.nav-links {
 		display: flex;
+	}
+}
+@media (max-width: 600px) {
+	dialog {
+		display: none;
 	}
 }
 @media (min-width: 600px) {
@@ -330,6 +416,44 @@ a {
 	}
 	.btn-add {
 		width: 60%;
+	}
+	.interactive .avatar {
+		margin-left: 1.5rem;
+	}
+	/* modal */
+
+	dialog {
+		position: relative;
+		max-width: 500px;
+		border: 0;
+		padding: 2rem;
+		background-color: transparent;
+	}
+	dialog > img:first-child {
+		border-radius: 2%;
+	}
+	dialog .p-display-sub {
+		margin-top: 2rem;
+		justify-content: center;
+	}
+	dialog .p-display-sub img {
+		max-width: 18%;
+	}
+	dialog::backdrop {
+		background: rgba(0, 0, 0, 0.75);
+	}
+	.close-button {
+		position: absolute;
+		top: 0;
+		right: 2rem;
+		border: 0;
+		background-color: transparent;
+	}
+	.close-button img {
+		padding: 0.2rem;
+		aspect-ratio: 1;
+		filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+			hue-rotate(93deg) brightness(103%) contrast(103%);
 	}
 }
 

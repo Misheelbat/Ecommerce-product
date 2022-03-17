@@ -37,7 +37,27 @@
 					</ul>
 				</nav>
 				<div class="interactive flex">
-					<img class="cart" src="/images/icon-cart.svg" alt="shopping-cart" />
+					<div data-amount="0" class="cart">
+						<img src="/images/icon-cart.svg" alt="shopping-cart" />
+						<div class="shopping-cart">
+							<h2>Cart</h2>
+							<div class="checkout">
+								<div class="flex">
+									<img
+										class="checkout-img"
+										src="/images/image-product-1-thumbnail.jpg"
+										alt=""
+									/>
+									<p class="checkout-text">
+										Fall Limited Edition Sneakers
+										<span>$125.00 x 3 $375.00</span>
+									</p>
+								</div>
+								<button class="checkout-btn">Checkout</button>
+								<img class="delete" src="/images/icon-delete.svg" alt="delete" />
+							</div>
+						</div>
+					</div>
 					<img class="avatar" src="/images/image-avatar.png" alt="avatar" />
 				</div>
 			</header>
@@ -71,6 +91,38 @@
 						/>
 					</div>
 				</div>
+				<dialog id="open">
+					<img
+						class="modal-mainThumb"
+						src="/images/image-product-1.jpg"
+						alt="picture of a sneakers"
+					/>
+					<div class="flex p-display-sub">
+						<img
+							class="active prod-thumbnail"
+							src="/images/image-product-1-thumbnail.jpg"
+							alt="shoe"
+						/>
+						<img
+							class="prod-thumbnail"
+							src="/images/image-product-2-thumbnail.jpg"
+							alt="shoe"
+						/>
+						<img
+							class="prod-thumbnail"
+							src="/images/image-product-3-thumbnail.jpg"
+							alt="shoe"
+						/>
+						<img
+							class="prod-thumbnail"
+							src="/images/image-product-4-thumbnail.jpg"
+							alt="shoe"
+						/>
+					</div>
+					<button class="close-button">
+						<img src="/images/icon-close.svg" alt="close button" />
+					</button>
+				</dialog>
 				<div class="p-info flow">
 					<p class="p-subtitle">Sneaker Company</p>
 					<h1 class="p-title">Fall Limited Edition <span>Sneakers</span></h1>
