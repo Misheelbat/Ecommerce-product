@@ -5,22 +5,23 @@ const counterButton = document
 	.querySelector('.btns')
 	.getElementsByTagName('img');
 const amount = document.querySelector('.amount');
-const mainThumbnail = document.querySelector('.main-thumb');
-const mainModalThumb = document.querySelector('.modal-mainThumb');
+const mainThumbnail = document.querySelectorAll('.main-thumb');
 const dialog = document.getElementById('open');
 const closeModalButton = document.querySelector('.close-button');
 const productInCart = document.querySelector('.cart');
 const buyButton = document.querySelector('.btn-add');
-
-/* modal open and close  */
-mainThumbnail.addEventListener('click', () => {
+const billsToPay = document.querySelector('.bills');
+const isCartEmpty = document.querySelector('[data-is-empty]');
+console.log(mainThumbnail);
+/* modal open and close on main image */
+mainThumbnail[0].addEventListener('click', () => {
 	dialog.showModal();
 });
 closeModalButton.addEventListener('click', () => {
 	dialog.close();
 });
 
-/* navigation dropdown */
+/* navigation dropdown on mobile*/
 navButton.addEventListener('click', () => {
 	const isOpen = navButton.getAttribute('aria-expanded');
 	console.log(thumbnails);
@@ -37,11 +38,12 @@ navButton.addEventListener('click', () => {
 const changeThumbnail = (thumbnail) => {
 	const src = thumbnail.getAttribute('src');
 	const sourceToSet = src.substring(0, 23) + '.jpg';
-	mainThumbnail.setAttribute('src', sourceToSet);
-	mainModalThumb.setAttribute('src', sourceToSet);
+	mainThumbnail.forEach((thumb) => {
+		thumb.setAttribute('src', sourceToSet);
+	});
 };
 
-/* thumbnail select */
+/* select thumbnail on click */
 thumbnails.forEach((thumb) => {
 	thumb.addEventListener('click', (e) => {
 		e.preventDefault();
@@ -57,7 +59,7 @@ thumbnails.forEach((thumb) => {
 	});
 });
 
-/* change counter */
+/* change counter counter = number of items to buy */
 let counter = 0;
 amount.textContent = counter;
 for (const btn of counterButton) {
@@ -77,7 +79,7 @@ for (const btn of counterButton) {
 	});
 }
 
-/* add to cart function */
+/* add to cart function and calculate price */
 buyButton.addEventListener('click', () => {
 	productInCart.setAttribute('data-amount', counter);
 	const productAmount = productInCart.getAttribute('data-amount');
@@ -86,7 +88,89 @@ buyButton.addEventListener('click', () => {
 		return;
 	} else {
 		productInCart.classList.add('cart-amount');
+		calculatePrice(billsToPay);
+		isCartEmpty.setAttribute('data-is-empty', true);
 		counter = 0;
 		amount.textContent = counter;
 	}
 });
+
+/* calculate final price in shopping cart */
+const calculatePrice = (element) => {
+	const calculatedBills = `$125.00 x ${counter} $<strong>${
+		counter * 125
+	}</strong>`;
+	element.innerHTML = calculatedBills;
+};
+
+/* delete cart items on delete icon */
+const deleteButton = document.querySelector('.delete');
+deleteButton.addEventListener('click', () => {
+	productInCart.classList.remove('cart-amount');
+	counter = 0;
+	amount.textContent = counter;
+	isCartEmpty.setAttribute('data-is-empty', false);
+});
+
+/* show and hide cart items on click  */
+productInCart.addEventListener('click', (e) => {
+	e.preventDefault();
+	shoppingCart = document.querySelector('.shopping-cart');
+	if (shoppingCart.style.display === 'block') {
+		shoppingCart.style.display = 'none';
+	} else {
+		shoppingCart.style.display = 'block';
+	}
+});
+
+/* arrow buttons  */
+const ISPLUS = false;
+const prevBtns = document.querySelectorAll('.prev');
+const nextBtns = document.querySelectorAll('.next');
+const arrowBtns = [...prevBtns, ...nextBtns];
+arrowBtns.forEach((btn) => {
+	btn.addEventListener('click', (e) => {
+		e.preventDefault();
+		const changedSrc = changeThumbnailWithArrow(btn);
+		console.log(changedSrc);
+	});
+});
+
+const changeThumbnailWithArrow = (btn) => {
+	const mainSrc = mainThumbnail[0].getAttribute('src');
+	const arrayOfSrc = mainSrc.split('-');
+
+	if (btn.classList.contains('prev')) {
+		if (parseInt(arrayOfSrc[2]) == 1) {
+			arrayOfSrc[2] = 4 + '.jpg';
+			const src = arrayOfSrc.join('-');
+			mainThumbnail.forEach((thumb) => {
+				thumb.setAttribute('src', src);
+			});
+			return;
+		}
+		arrayOfSrc[2] = parseInt(arrayOfSrc[2]) - 1 + '.jpg';
+		const src = arrayOfSrc.join('-');
+		mainThumbnail.forEach((thumb) => {
+			thumb.setAttribute('src', src);
+		});
+	}
+
+	if (btn.classList.contains('next')) {
+		if (parseInt(arrayOfSrc[2]) === 4) {
+			arrayOfSrc[2] = 1 + '.jpg';
+			const src = arrayOfSrc.join('-');
+			mainThumbnail.forEach((thumb) => {
+				thumb.setAttribute('src', src);
+			});
+			return;
+		}
+
+		arrayOfSrc[2] = parseInt(arrayOfSrc[2]) + 1 + '.jpg';
+		const src = arrayOfSrc.join('-');
+
+		mainThumbnail.forEach((thumb) => {
+			thumb.setAttribute('src', src);
+		});
+	}
+};
