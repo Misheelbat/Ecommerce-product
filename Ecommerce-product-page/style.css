@@ -474,7 +474,7 @@ a {
 		padding: 2rem;
 		background-color: transparent;
 	}
-	dialog > img:first-child {
+	dialog > div:first-child img {
 		border-radius: 2%;
 	}
 	dialog .p-display-sub {

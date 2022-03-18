@@ -123,54 +123,43 @@ productInCart.addEventListener('click', (e) => {
 	}
 });
 
-/* arrow buttons  */
-const ISPLUS = false;
+/* arrow buttons - on click change src of current image */
 const prevBtns = document.querySelectorAll('.prev');
 const nextBtns = document.querySelectorAll('.next');
 const arrowBtns = [...prevBtns, ...nextBtns];
+
 arrowBtns.forEach((btn) => {
 	btn.addEventListener('click', (e) => {
 		e.preventDefault();
-		const changedSrc = changeThumbnailWithArrow(btn);
-		console.log(changedSrc);
+		const address = changeThumbnailWithArrow(btn);
+		mainThumbnail.forEach((t) => {
+			t.setAttribute('src', address);
+		});
 	});
 });
 
+/* get current img src and increment and decrement it */
 const changeThumbnailWithArrow = (btn) => {
 	const mainSrc = mainThumbnail[0].getAttribute('src');
 	const arrayOfSrc = mainSrc.split('-');
 
-	if (btn.classList.contains('prev')) {
-		if (parseInt(arrayOfSrc[2]) == 1) {
-			arrayOfSrc[2] = 4 + '.jpg';
-			const src = arrayOfSrc.join('-');
-			mainThumbnail.forEach((thumb) => {
-				thumb.setAttribute('src', src);
-			});
-			return;
-		}
-		arrayOfSrc[2] = parseInt(arrayOfSrc[2]) - 1 + '.jpg';
-		const src = arrayOfSrc.join('-');
-		mainThumbnail.forEach((thumb) => {
-			thumb.setAttribute('src', src);
-		});
-	}
-
 	if (btn.classList.contains('next')) {
 		if (parseInt(arrayOfSrc[2]) === 4) {
 			arrayOfSrc[2] = 1 + '.jpg';
-			const src = arrayOfSrc.join('-');
-			mainThumbnail.forEach((thumb) => {
-				thumb.setAttribute('src', src);
-			});
-			return;
+			return arrayOfSrc.join('-');
+		} else {
+			arrayOfSrc[2] = parseInt(arrayOfSrc[2]) + 1 + '.jpg';
+			return arrayOfSrc.join('-');
 		}
+	}
 
-		arrayOfSrc[2] = parseInt(arrayOfSrc[2]) + 1 + '.jpg';
-		const src = arrayOfSrc.join('-');
-
-		mainThumbnail.forEach((thumb) => {
-			thumb.setAttribute('src', src);
-		});
+	if (btn.classList.contains('prev')) {
+		if (parseInt(arrayOfSrc[2]) == 1) {
+			arrayOfSrc[2] = 4 + '.jpg';
+			return arrayOfSrc.join('-');
+		} else {
+			arrayOfSrc[2] = parseInt(arrayOfSrc[2]) - 1 + '.jpg';
+			return arrayOfSrc.join('-');
+		}
 	}
 };
