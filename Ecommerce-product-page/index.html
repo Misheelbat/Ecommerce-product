@@ -39,22 +39,29 @@
 				<div class="interactive flex">
 					<div data-amount="0" class="cart">
 						<img src="/images/icon-cart.svg" alt="shopping-cart" />
-						<div class="shopping-cart">
+						<div id="cc" class="shopping-cart">
 							<h2>Cart</h2>
-							<div class="checkout">
-								<div class="flex">
+							<div data-is-empty="false" class="checkout">
+								<div class="checkout-list">
+									<div class="flex">
+										<img
+											class="checkout-img"
+											src="/images/image-product-1-thumbnail.jpg"
+											alt=""
+										/>
+										<p class="checkout-text">
+											Fall Limited Edition Sneakers
+											<span class="bills"></span>
+										</p>
+									</div>
+									<button class="checkout-btn">Checkout</button>
 									<img
-										class="checkout-img"
-										src="/images/image-product-1-thumbnail.jpg"
-										alt=""
+										class="delete"
+										src="/images/icon-delete.svg"
+										alt="delete"
 									/>
-									<p class="checkout-text">
-										Fall Limited Edition Sneakers
-										<span>$125.00 x 3 $375.00</span>
-									</p>
 								</div>
-								<button class="checkout-btn">Checkout</button>
-								<img class="delete" src="/images/icon-delete.svg" alt="delete" />
+								<div class="cart-empty">Your cart is empty.</div>
 							</div>
 						</div>
 					</div>
@@ -63,12 +70,22 @@
 			</header>
 			<main class="container flex">
 				<div class="p-display flow">
-					<img
-						class="main-thumb"
-						src="/images/image-product-1.jpg"
-						alt="picture of a sneakers"
-					/>
-					<div class="flex p-display-sub">
+					<div class="main-image">
+						<img
+							class="main-thumb"
+							src="/images/image-product-1.jpg"
+							alt="picture of a sneakers"
+						/>
+						<div class="image-btns">
+							<button class="prev">
+								<img src="/images/icon-previous.svg" alt="" />
+							</button>
+							<button class="next">
+								<img src="/images/icon-next.svg" alt="" />
+							</button>
+						</div>
+					</div>
+					<div class="flex p-display-sub thumb">
 						<img
 							class="active prod-thumbnail"
 							src="/images/image-product-1-thumbnail.jpg"
@@ -92,11 +109,21 @@
 					</div>
 				</div>
 				<dialog id="open">
-					<img
-						class="modal-mainThumb"
-						src="/images/image-product-1.jpg"
-						alt="picture of a sneakers"
-					/>
+					<div class="dialog-image">
+						<img
+							class="main-thumb"
+							src="/images/image-product-1.jpg"
+							alt="picture of a sneakers"
+						/>
+						<div class="image-btns">
+							<button class="prev">
+								<img src="/images/icon-previous.svg" alt="" />
+							</button>
+							<button class="next">
+								<img src="/images/icon-next.svg" alt="" />
+							</button>
+						</div>
+					</div>
 					<div class="flex p-display-sub">
 						<img
 							class="active prod-thumbnail"
