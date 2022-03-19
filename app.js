@@ -39,6 +39,7 @@ navButton.addEventListener('click', () => {
 const changeThumbnail = (thumbnail) => {
 	const src = thumbnail.getAttribute('src');
 	const sourceToSet = src.substring(0, 22) + '.jpg';
+	console.log(sourceToSet);
 	mainThumbnail.forEach((thumb) => {
 		thumb.setAttribute('src', sourceToSet);
 	});
