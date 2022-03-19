@@ -13,6 +13,7 @@ const buyButton = document.querySelector('.btn-add');
 const billsToPay = document.querySelector('.bills');
 const isCartEmpty = document.querySelector('[data-is-empty]');
 console.log(mainThumbnail);
+
 /* modal open and close on main image */
 mainThumbnail[0].addEventListener('click', () => {
 	dialog.showModal();
@@ -37,7 +38,7 @@ navButton.addEventListener('click', () => {
 /* function that changes the src attribute of img */
 const changeThumbnail = (thumbnail) => {
 	const src = thumbnail.getAttribute('src');
-	const sourceToSet = src.substring(0, 23) + '.jpg';
+	const sourceToSet = src.substring(0, 22) + '.jpg';
 	mainThumbnail.forEach((thumb) => {
 		thumb.setAttribute('src', sourceToSet);
 	});
