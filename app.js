@@ -12,7 +12,6 @@ const productInCart = document.querySelector('.cart');
 const buyButton = document.querySelector('.btn-add');
 const billsToPay = document.querySelector('.bills');
 const isCartEmpty = document.querySelector('[data-is-empty]');
-console.log(mainThumbnail);
 
 /* modal open and close on main image */
 mainThumbnail[0].addEventListener('click', () => {
